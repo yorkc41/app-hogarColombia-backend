@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -26,6 +27,8 @@ export class InmuebleController {
     public inmuebleRepository : InmuebleRepository,
   ) {}
 
+  //agregando autenticador
+  @authenticate('admin')
   @post('/inmuebles')
   @response(200, {
     description: 'Inmueble model instance',
